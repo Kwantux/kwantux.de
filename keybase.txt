@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/kwantux
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://kwantux.de
+  * I am kwantux (https://keybase.io/kwantux) on keybase.
+  * I have a public key ASAjnpM-O7XylgHfiCeCP551GFWO5bBISA_bBKLTxRZNIgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120239e933e3bb5f29601df8827823f9e7518558ee5b048480fdb04a2d3c5164d220a",
+      "host": "keybase.io",
+      "kid": "0120239e933e3bb5f29601df8827823f9e7518558ee5b048480fdb04a2d3c5164d220a",
+      "uid": "d3692224c539a13500ea491ad29a8e19",
+      "username": "kwantux"
+    },
+    "merkle_root": {
+      "ctime": 1727970755,
+      "hash": "151fd92df62fbe597c9676708fd258da01ff6fc272425ab96e940dbbeba43c701b497a33f6f706e41ae80475598d8ad9b180a77fcd0d4a2c00a5fbbc6fea0072",
+      "hash_meta": "33f056669d2446060197866e9b96ae30789f5dbeba15096ad5ec221251f9bffa",
+      "seqno": 26170984
+    },
+    "service": {
+      "entropy": "3XQcXQxj38V0e2puAKq8M2R4",
+      "hostname": "kwantux.de",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.4.0"
+  },
+  "ctime": 1727970905,
+  "expire_in": 504576000,
+  "prev": "b4d4b7706681f4ac17229dbf8e229c8563814198eca3d4b4e30f38d9ab0b428c",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgI56TPju18pYB34gngj+edRhVjuWwSEgP2wSi08UWTSIKp3BheWxvYWTESpcCBcQgtNS3cGaB9KwXIp2/jiKchWOBQZjso9S04w842asLQozEIDSVBTtCJ5C8bmyrjSdjHLOWy0+spXUXbUhijeLra8eXAgHCo3NpZ8RAAusMSjkb1gL+jBNjHyyfZOKnx2p/2XUX3YYf2R7dSjitDoHLqj4lafgqK53NkE8RxnCFp79Yl8re9HTg7cPfDqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIBYTxE0nu9ybI42qQga0haWmJolWdmvqJNoJa/4bxdAbo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kwantux
+
+==================================================================
