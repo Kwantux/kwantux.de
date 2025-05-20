@@ -25,7 +25,7 @@ const projects: Project[] = [
   {
     title: "Procedural World Generation Demo",
     description: "A demo of a procedural world generation algorithm",
-    image: "/src/assets/worldgen.png",
+    image: "/worldgen.png",
     link: "https://worldgen.kwantux.de",
     tags: ["React", "Three.js"]
   }
