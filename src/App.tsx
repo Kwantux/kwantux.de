@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { ThemeToggle } from './components/theme-toggle';
 import { Imprint } from './components/Imprint';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
 interface Project {
@@ -107,11 +107,30 @@ function Home() {
   );
 }
 
+function PathRedirect() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if we have a path parameter
+    const params = new URLSearchParams(window.location.search);
+    const path = params.get('p');
+    
+    if (path) {
+      // Remove the query parameter and navigate to the path
+      window.history.replaceState(null, '', path);
+      navigate(path);
+    }
+  }, [navigate]);
+
+  return null;
+}
+
 function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <Router>
         <div className="min-h-screen bg-background text-foreground">
+          <PathRedirect />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/imprint" element={<Imprint />} />
