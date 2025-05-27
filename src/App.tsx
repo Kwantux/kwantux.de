@@ -1,8 +1,8 @@
 import { Github, Mail, Linkedin, ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'next-themes';
-import { ThemeToggle } from './components/theme-toggle';
 import { Imprint } from './components/Imprint';
+import { MatrixEffect } from './components/MatrixEffect';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
@@ -32,19 +32,57 @@ const projects: Project[] = [
 ];
 
 function Home() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [name, setName] = useState("");
 
   useEffect(() => {
-    setIsVisible(true);
+    const names = ["Kwantux", "Linus"];
+    let timeout: NodeJS.Timeout;
+
+    const typeText = (nameIndex: number, charIndex: number, isDeleting: boolean) => {
+
+      const currentName = names[nameIndex];
+      
+      if (isDeleting) {
+        // Deleting text
+        setName(currentName.substring(0, charIndex - 1));
+        charIndex--;
+        
+        if (charIndex === 0) {
+          timeout = setTimeout(() => {
+            typeText(nameIndex == 0 ? 1 : 0, 0, false);
+          }, 1000);
+        } else {
+          timeout = setTimeout(typeText, 100, nameIndex, charIndex, isDeleting);
+        }
+      } else {
+        // Typing text
+        setName(currentName.substring(0, charIndex + 1));
+        charIndex++;
+        
+        if (charIndex === currentName.length) {
+          timeout = setTimeout(() => {
+            typeText(nameIndex, charIndex, true);
+          }, 2000);
+        } else {
+          timeout = setTimeout(typeText, 150, nameIndex, charIndex, false);
+        }
+      }
+    };
+
+    timeout = setTimeout(typeText, 1000, 0, 0, false); // Start after 1 second
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
     <>
-      <ThemeToggle />
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center relative px-4">
-        <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h1 className="text-6xl font-bold mb-4">Kwantux</h1>
+        <div className={`transform transition-all duration-1000 translate-y-0 opacity-100`}>
+          <h1 className="text-6xl font-bold mb-4">
+            {name}
+            <span className="animate-pulse">|</span>
+          </h1>
           <p className="text-xl text-muted-foreground mb-8">Hobby Developer</p>
           <div className="flex gap-4 mb-12 justify-center">
             <a href="https://github.com/Kwantux" className="hover:text-primary transition-colors">
@@ -58,13 +96,19 @@ function Home() {
             </a>
           </div>
         </div>
-        <div className="absolute bottom-10 animate-bounce">
+        <button 
+          onClick={() => {
+            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="absolute bottom-10 animate-bounce hover:scale-110 transition-transform cursor-pointer"
+        >
           <ChevronDown className="w-6 h-6" />
-        </div>
+        </button>
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-4">
+      <section id="projects" className="py-20 px-4 bg-background/80 backdrop-blur-sm relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80 -z-10"></div>
         <h2 className="text-4xl font-bold text-center mb-16">Projects</h2>
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
@@ -98,7 +142,8 @@ function Home() {
           ))}
         </div>
       </section>
-      <footer className="py-8 text-center text-muted-foreground">
+      <footer className="py-8 text-center text-muted-foreground bg-background/80 backdrop-blur-sm relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent -z-10"></div>
         <Link to="/imprint" className="hover:text-primary transition-colors">
           Imprint
         </Link>
@@ -111,12 +156,10 @@ function PathRedirect() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if we have a path parameter
     const params = new URLSearchParams(window.location.search);
     const path = params.get('p');
     
     if (path) {
-      // Remove the query parameter and navigate to the path
       window.history.replaceState(null, '', path);
       navigate(path);
     }
@@ -127,9 +170,10 @@ function PathRedirect() {
 
 function App() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
       <Router>
-        <div className="min-h-screen bg-background text-foreground">
+        <div className="min-h-screen text-foreground">
+          <MatrixEffect />
           <PathRedirect />
           <Routes>
             <Route path="/" element={<Home />} />
