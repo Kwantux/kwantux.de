@@ -1,4 +1,4 @@
-import { Github, Mail, Linkedin, ChevronDown } from 'lucide-react';
+import { Github, Mail, Linkedin, ChevronDown, Coffee } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { Imprint } from './components/Imprint';
@@ -87,6 +87,9 @@ function Home() {
           <div className="flex gap-4 mb-12 justify-center">
             <a href="https://github.com/Kwantux" className="hover:text-primary transition-colors">
               <Github className="w-6 h-6" />
+            </a>
+            <a href="https://ko-fi.com/kwantux" className="hover:text-primary transition-colors">
+              <Coffee className="w-6 h-6" />
             </a>
             <a href="https://www.linkedin.com/in/linus-peczkowski-6bab00350/" className="hover:text-primary transition-colors">
               <Linkedin className="w-6 h-6" />
