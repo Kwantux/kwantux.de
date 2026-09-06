@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { Imprint } from './components/Imprint';
 import { MatrixEffect } from './components/MatrixEffect';
+import { KrftgAME } from './components/KrftgAME';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
@@ -182,6 +183,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/imprint" element={<Imprint />} />
             <Route path="/imprint.html" element={<Imprint />} />
+            <Route path="/krftg251" element={<KrftgAME />} />
           </Routes>
         </div>
       </Router>
