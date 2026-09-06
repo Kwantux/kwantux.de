@@ -78,6 +78,7 @@ function Home() {
   return (
     <>
       {/* Hero Section */}
+      <MatrixEffect />
       <section className="min-h-screen flex flex-col items-center justify-center relative px-4">
         <div className={`transform transition-all duration-1000 translate-y-0 opacity-100`}>
           <h1 className="text-6xl font-bold mb-4">
@@ -174,13 +175,12 @@ function App() {
     <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
       <Router>
         <div className="min-h-screen text-foreground">
-          <MatrixEffect />
           <PathRedirect />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/imprint" element={<Imprint />} />
             <Route path="/imprint.html" element={<Imprint />} />
-            <Route path="/krftg251" element={<KrftgAME />} />
+            <Route path="/q/krftg251" element={<KrftgAME />} />
           </Routes>
         </div>
       </Router>
